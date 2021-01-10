@@ -1,0 +1,149 @@
+//add bulma font module
+
+:root {
+  //classic #FFFFFF is the default theme
+  // element background colors
+  --app-background-color: #FFFFFF;
+  --search-input-caret-color: #222222;
+  --search-results-scrollbar-color: #222222;
+  --selected-suggestion-background-color: #222222;
+  // text sizing
+  --search-input-value-text-size: 30px;
+  --suggestion-title-text-size: 16px;
+  --suggestion-subtitle-text-size: 13px;
+  //text colors
+  --search-input-value-text-color: #222222;
+  --selected-suggestion-title-text-color: #FFFFFF;
+  --selected-suggestion-subtitle-text-color: #FFFFFF;
+  --selected-suggestion-character-match-color: #FFFFFF;
+  --suggestion-title-text-color: #222222;
+  --suggestion-subtitle-text-color: #222222;
+  --suggestion-character-match-color: #222222;
+  //spacing
+  --search-results-scrollbar-width: 2px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.cLauncher {
+  background: var(--app-background-color);
+  min-height: 60px;
+  width: var(--app-width-size);
+
+  .cLauncher__search {
+    background-color: var(--app-background-color);
+    caret-color: var(--search-input-caret-color);
+    border: none;
+    color: var(--search-input-value-text-color);
+    height: 50px;
+    font-size: var(--search-input-value-text-size);
+    font-weight: 300;
+    width: 100%;
+    padding: 5px 5px 5px 15px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .cLauncher__icon {
+    margin-top: 5px;
+  }
+
+  .cLauncher__search-input-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+  }
+
+  .cLauncher__suggestions {
+    max-height: 300px;
+    margin: 0;
+    background: var(--app-background-color);
+    overflow-y: scroll;
+    padding: 0;
+  }
+
+  .cLauncher__scrollbar::-webkit-scrollbar {
+    width: var(--search-results-scrollbar-width);
+  }
+
+  .cLauncher__scrollbar::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: var(--search-results-scrollbar-color);
+  }
+
+  .cLauncher__suggestion {
+    display: flex;
+    align-items: center;
+    padding: 10px 10px 10px 20px;
+    list-style: none;
+    height: 60px;
+
+    &.selected {
+      background-color: var(--selected-suggestion-background-color);
+
+      .cLauncher__suggestion-title {
+        color: var(--selected-suggestion-title-text-color);
+      }
+
+      .cLauncher__suggestion-subtitle {
+        color: var(--selected-suggestion-subtitle-text-color);
+      }
+
+      strong {
+        color: var(--selected-suggestion-character-match-color);
+      }
+    }
+
+    &.loading:after {
+      content: '';
+      border: 2px solid #f3f3f3;
+      animation: spin 1s linear infinite;
+      border-top: 3px solid #555;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      right: 30px;
+    }
+
+    .cLauncher__suggestion-icon {
+      width: 20px;
+      margin-right: 10px;
+    }
+
+    .cLauncher__suggestion-text-info {
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+    }
+
+    .cLauncher__suggestion-title {
+      color: var(--suggestion-title-text-color);
+      font-size: var(--suggestion-title-text-size);
+      margin-bottom: 2px;
+    }
+
+    .cLauncher__suggestion-subtitle {
+      color: var(--suggestion-subtitle-text-color);
+      font-size: var(--suggestion-subtitle-text-size);
+    }
+
+    .cLauncher__suggestion-subtitle,
+    .cLauncher__suggestion-title {
+      max-width: 400px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    strong {
+      font-weight: bold;
+      color: var(--suggestion-character-match-color);
+    }
+  }
+}

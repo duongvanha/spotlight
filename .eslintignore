@@ -1,0 +1,7 @@
+!/*.js
+/docs/lib/
+/tests/**/*.js
+!/tests/**/jsfmt.spec.js
+/test.js
+/dist/
+/scripts/build

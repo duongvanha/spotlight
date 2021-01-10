@@ -1,0 +1,52 @@
+{
+  "manifest_version": 2,
+  "name": "spotlight",
+  "description": "Spotlight search for chrome",
+  "homepage_url": "https://github.com/duongvanha/spotlight",
+  "version": "1.0.0",
+  "browser_action": {
+    "default_icon": "images/Spotlight-logo.png",
+    "default_popup": "popup.html",
+    "default_title": "Spotlight"
+  },
+  "web_accessible_resources": [
+    "window.js"
+  ],
+  "content_scripts": [
+    {
+      "js": [
+        "backgroud.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ],
+      "all_frames": true
+    }
+  ],
+  "icons": {
+    "16": "images/spotlight-logo16.png",
+    "48": "images/spotlight-logo48.png",
+    "128": "images/spotlight-logo128.png"
+  },
+  "permissions": [
+    "activeTab",
+    "bookmarks",
+    "tabs",
+    "management",
+    "storage",
+    "cookies",
+    "*://*.shopbase.net/",
+    "*://*.shopbase.com/"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "windows": "Ctrl+J",
+        "mac": "Command+J",
+        "chromeos": "Ctrl+M",
+        "linux": "Ctrl+M"
+      }
+    }
+  }
+}
